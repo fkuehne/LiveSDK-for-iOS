@@ -656,7 +656,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				VALID_ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				VALID_ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT) armv7s";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -679,7 +679,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				VALID_ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				VALID_ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT) armv7s";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
