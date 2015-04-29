@@ -75,25 +75,12 @@
     [super viewDidLoad];
     
     self.webView.delegate = self;
-    
-    // Override the left button to show a back button
-    // which is used to dismiss the modal view    
-    UIImage *buttonImage = [LiveAuthHelper getBackButtonImage]; 
-    //create the button and assign the image
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setImage:buttonImage 
-            forState:UIControlStateNormal];
-    //set the frame of the button to the size of the image
-    button.frame = CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height);
-    
-    [button addTarget:self 
-               action:@selector(dismissView:) 
-     forControlEvents:UIControlEventTouchUpInside]; 
-    
-    //create a UIBarButtonItem with the button as a custom view
-    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc]
-                                              initWithCustomView:button]autorelease];  
-    
+
+	UIBarButtonItem *dismissBarButton = [[[UIBarButtonItem alloc]
+										  initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+										  target:self action:@selector(dismissView:)]autorelease];
+	self.navigationItem.leftBarButtonItem = dismissBarButton;
+
     //Load the Url request in the UIWebView.
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:_startUrl];
     [webView loadRequest:requestObj];    
