@@ -38,7 +38,9 @@
               scopes = _scopes,
              session = _session,
               status = _status,
+#if TARGET_OS_IOS
          authRequest = _authRequest,
+#endif
   authRefreshRequest = _authRefreshRequest;
 
 
@@ -77,7 +79,9 @@
     [_clientId release];
     [_scopes release];
     [_session release];
+#if TARGET_OS_IOS
     [_authRequest release];
+#endif
     [_storage release];
     
     [super dealloc];
@@ -85,6 +89,7 @@
 
 #pragma mark Auth methods
 
+#if TARGET_OS_IOS
 - (void) login:(UIViewController *)currentViewController 
         scopes:(NSArray *)scopes 
       delegate:(id<LiveAuthDelegate>)delegate
@@ -109,10 +114,15 @@
     
     [authRequest execute]; 
 }
+#endif
 
 - (BOOL) hasPendingUIRequest
 {
+#if TARGET_OS_IOS
     return (self.authRequest != nil && self.authRequest.isUserInvolved);
+#else
+    return NO;
+#endif
 }
 
 - (void) logoutWithDelegate:(id<LiveAuthDelegate>)delegate

@@ -26,7 +26,9 @@
 
 #import <Foundation/Foundation.h>
 #import "LiveAuthDelegate.h"
+#if TARGET_OS_IOS
 #import "LiveAuthRequest.h"
+#endif
 #import "LiveAuthRefreshRequest.h"
 #import "LiveAuthStorage.h"
 #import "LiveConnectSession.h"
@@ -52,7 +54,9 @@
 @property (nonatomic) LiveConnectSessionStatus status;
 @property (nonatomic, retain) LiveConnectSession *session;
 
+#if TARGET_OS_IOS
 @property (nonatomic, retain) LiveAuthRequest *authRequest;
+#endif
 @property (nonatomic, retain) LiveAuthRefreshRequest *authRefreshRequest;
 @property (nonatomic, readonly) BOOL hasPendingUIRequest;
 
@@ -61,10 +65,12 @@
                delegate:(id<LiveAuthDelegate>)delegate
               userState:(id)userState;
 
+#if TARGET_OS_IOS
 - (void) login:(UIViewController *)currentViewController
         scopes:(NSArray *)scopes
       delegate:(id<LiveAuthDelegate>)delegate
      userState:(id)userState;
+#endif
 
 - (void) logoutWithDelegate:(id<LiveAuthDelegate>)delegate
                   userState:(id)userState;
